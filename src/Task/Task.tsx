@@ -2,23 +2,24 @@ import React from "react";
 
 interface Props {
     todo: string,
-    removeTask: React.MouseEventHandler
+    removeTask: React.MouseEventHandler,
+    finished: React.MouseEventHandler,
+    formStyle: object
 }
 
-const formStyle = {
-    display: "flex",
-    justifyContent: "space-between",
-    marginTop: "20px",
-    width: "500px"
-}
-const Task: React.FC<Props> = ({todo, removeTask}) => {
+const Task: React.FC<Props> = ({todo, removeTask, finished, formStyle}) => {
     return(
         <>
             <div style={formStyle}>
-                <span>{todo}</span><button onClick={removeTask}>Delete</button>
+                <span>{todo}</span>
+                <div>
+                    <span>Finish task</span>
+                    <input type="checkbox" onClick={finished}/>
+                    <button onClick={removeTask}>Delete</button>
+                </div>
             </div>
         </>
     )
-}
+};
 
 export default Task;
